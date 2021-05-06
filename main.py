@@ -6,7 +6,7 @@ from flask_cors import CORS, cross_origin
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/')
