@@ -39,7 +39,8 @@
         request.send();
         request.onreadystatechange = (e) => {
           console.log(request.responseText);
-          const res = request.response;
+          console.log(request.response);
+          const res = JSON.parse(request.response);
           const webT = document.getElementById("webTemp");
           webT.innerHTML = res['temp'] + ' \xB0F';
         }
