@@ -10,7 +10,6 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/')
-@cross_origin()
 def home():
     return render_template("home.html")
 
