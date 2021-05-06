@@ -45,6 +45,7 @@
           const webT = document.getElementById("webTemp");
           webT.innerHTML = res['temp'] + ' \xB0F';
         }
+        request.send(null);
         var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
         populateData(t);
 
