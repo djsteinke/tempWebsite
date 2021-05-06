@@ -1,4 +1,5 @@
 import os
+import socket
 
 from flask import Flask, render_template, send_from_directory
 
@@ -17,4 +18,10 @@ def favicon():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app.run()
+    host_name = socket.gethostbyname(socket.gethostname())
+    try:
+        stream = os.popen('hostname -I')
+        host_name = stream.read().strip()
+    except all:
+        host_name = 'localhost'
+    app.run(host=host_name)
