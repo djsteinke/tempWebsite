@@ -1,0 +1,61 @@
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Roboto', cursive;
+}
+
+/* header styles */
+
+.group {
+  background-color: blue;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  background-color: blue;
+}
+
+header p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* section styles */
+
+section div {
+  width: 50%;
+  float: left;
+  background-color: green;
+}
+
+/*
+section p {
+  margin: 5px 0;
+}
+*/
+
+p {
+  background-color: red;
+  font-family: 'Roboto', cursive;
+  text-align: center;
+}
+
+section ul {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+}
