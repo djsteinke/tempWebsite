@@ -33,12 +33,12 @@
     <script>
         const header = document.querySelector('header');
         const section = document.querySelector('section');
-        let requestURL = 'http://192.168.0.140:31000/getTemp';
-        let request = new XMLHttpRequest();
+        const requestURL = 'http://192.168.0.140:31000/getTemp';
+        const request = new XMLHttpRequest();
         request.open('GET', requestURL);
-        request.responseType = 'json';
         request.send();
-        request.onload = function() {
+        request.onreadystatechange = (e) => {
+          console.log(request.responseText);
           const res = request.response;
           const t = document.getElementById("webTEmp");
           t.innerHTML = res['temp'] + ' \xB0F';
