@@ -39,8 +39,8 @@
         request.onload = function() {
           const res = request.response;
           const b = document.createElement('p');
-          b.innerHTML = res.temp;
-          section.addChild(b);
+          b.innerHTML = res['temp'] + ' F';
+          section.appendChild(b);
         }
         var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
         populateData(t);
