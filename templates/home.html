@@ -11,12 +11,18 @@
   <body>
 
     <header>
-        <h1>Test Temp</h1>
-
+        <h1 id="title">Outside</h1>
     </header>
 
     <section>
-
+        <div>
+            <p>Temperature</p>
+            <h1 id="temperature"></h1>
+        </div>
+        <div>
+            <p>Humidity</p>
+            <h1 id="humidity"></h1>
+        </div>
     </section>
 
     <script>
@@ -30,39 +36,15 @@
         request.onload = function() {
           const res = request.response;
         }
-        populateHeader('Outside');
         var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
         populateData(t);
 
         function populateData(obj) {
-            const art = document.createElement('div')
-            /* art.classList.add('group'); */
-            const p1 = document.createElement('p');
-            p1.textContent = 'Temperature';
-            art.appendChild(p1);
+            const h1 = document.getElementById("temperature");
+            h1.innerHTML = obj.temp + ' \xB0F';
 
-            const h1 = document.createElement('h1');
-            h1.textContent = obj.temp + ' \xB0F';
-            art.appendChild(h1);
-            section.appendChild(art);
-
-            const art2 = document.createElement('div')
-            /* art.classList.add('group'); */
-            const p2 = document.createElement('p');
-            p2.textContent = 'Humidity';
-            art2.appendChild(p2);
-
-            const h2 = document.createElement('h1');
-            h2.textContent = obj.humidity + ' %';
-            art2.appendChild(h2);
-            section.appendChild(art2);
-        }
-
-
-        function populateHeader(obj) {
-          const myH1 = document.createElement('h1');
-          myH1.textContent = obj;
-          header.appendChild(myH1);
+            const h2 = document.getElementById("humidity");
+            h2.innerHTML = obj.humidity + ' %';
         }
 
     </script>
