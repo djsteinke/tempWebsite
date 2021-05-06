@@ -1,7 +1,7 @@
 import os
 import re
 import socket
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 from flask import Flask, render_template, send_from_directory
 
@@ -10,6 +10,7 @@ CORS(app)
 
 
 @app.route('/')
+@cross_origin()
 def home():
     return render_template("home.html")
 
