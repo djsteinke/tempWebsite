@@ -6,7 +6,7 @@ from flask_cors import CORS, cross_origin
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
-app.config['CORS_ORIGINS'] = ['*']
+app.config['CORS_ORIGINS'] = ['http://192.168.0.155']
 app.config['CORS_HEADERS'] = ['Content-Type']
 
 
