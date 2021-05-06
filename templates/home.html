@@ -42,12 +42,15 @@
           console.log(request.responseText);
           console.log(request.response);
           const res = JSON.parse(request.response);
-          const webT = document.getElementById("webTemp");
-          webT.innerHTML = res['temp'] + ' \xB0F';
+          const webT = document.getElementById("temperature");
+          webT.innerHTML = res['temp_f'] + ' \xB0F';
+
+          const h2 = document.getElementById("humidity");
+          h2.innerHTML = res['humidity'] + ' %';
         }
         request.send(null);
         var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
-        populateData(t);
+        //populateData(t);
 
         function populateData(obj) {
             const h1 = document.getElementById("temperature");
@@ -56,7 +59,7 @@
             const h2 = document.getElementById("humidity");
             h2.innerHTML = obj.humidity + ' %';
         }
-
+        //var interval = setInterval('setTemp', 60000);
     </script>
   </body>
 </html>
