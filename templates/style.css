@@ -14,14 +14,12 @@ h1, h2 {
 /* header styles */
 
 .group {
-  background-color: blue;
   text-align: center;
 }
 
 h1 {
   font-size: 4rem;
   text-align: center;
-  background-color: blue;
 }
 
 header p {
@@ -35,7 +33,6 @@ header p {
 section div {
   width: 50%;
   float: left;
-  background-color: green;
 }
 
 /*
