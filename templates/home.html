@@ -18,11 +18,13 @@
         <div>
             <p>Temperature</p>
             <h1 id="temperature"></h1>
+            <h1 id="webTemp"></h1>
         </div>
         <div>
             <p>Humidity</p>
             <h1 id="humidity"></h1>
         </div>
+
 
     <script>document.write("JavaScript is enabled in your browser.")</script>
     <noscript>It looks like JavaScript is disabled in your browser, or your browser doesn't support JavaScript.</noscript>
@@ -38,9 +40,8 @@
         request.send();
         request.onload = function() {
           const res = request.response;
-          const b = document.createElement('p');
-          b.innerHTML = res['temp'] + ' F';
-          section.appendChild(b);
+          const t = document.getElementById("webTEmp");
+          t.innerHTML = res.temp + ' \xB0F';
         }
         var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
         populateData(t);
