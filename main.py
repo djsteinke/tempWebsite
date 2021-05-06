@@ -1,4 +1,5 @@
 import os
+import re
 import socket
 
 from flask import Flask, render_template, send_from_directory
@@ -21,7 +22,9 @@ if __name__ == '__main__':
     host_name = socket.gethostbyname(socket.gethostname())
     try:
         stream = os.popen('hostname -I')
-        host_name = stream.read().strip()
+        stream = stream.read().strip()
+        val = re.search("(?:(?!\s).)*", stream)
+        host_name = val[0]
     except all:
         host_name = 'localhost'
     app.run(host=host_name)
