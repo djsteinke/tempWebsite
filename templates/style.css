@@ -8,6 +8,7 @@ body {
 }
 
 h1, h2 {
+  text-color: black;
   font-family: 'Roboto', cursive;
 }
 
@@ -23,6 +24,7 @@ h1 {
 }
 
 header p {
+  text-color: black;
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
@@ -42,6 +44,7 @@ section p {
 */
 
 p {
+  text-color: black;
   font-family: 'Roboto', cursive;
   text-align: center;
 }
