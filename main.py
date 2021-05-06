@@ -6,10 +6,12 @@ from flask_cors import CORS, cross_origin
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+app.config['CORS_ORIGINS'] = ['*']
+app.config['CORS_HEADERS'] = ['Content-Type']
 
 
 @app.route('/')
+@cross_origin()
 def home():
     return render_template("home.html")
 
