@@ -42,10 +42,10 @@
               console.log(request.response);
               const res = JSON.parse(request.response);
               const webT = document.getElementById("temperature");
-              webT.innerHTML = res['temp_f'] + ' \xB0F';
+              webT.innerHTML = Math.round(res['temp_f']) + ' \xB0F';
 
               const h2 = document.getElementById("humidity");
-              h2.innerHTML = res['humidity'] + ' %';
+              h2.innerHTML = Math.round(res['humidity']) + ' %';
             }
             request.send(null);
         }
