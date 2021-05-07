@@ -18,6 +18,21 @@ h1, h2 {
   text-align: center;
 }
 
+.l {
+  font-size: 4rem;
+  margin-top: -15px;
+}
+
+.m {
+  font-size: 3rem;
+  margin-top: 0px;
+}
+
+.s {
+  font-size: 1.8rem;
+  margin-top: -15px;
+}
+
 h1 {
   font-size: 4rem;
   text-align: center;

@@ -11,55 +11,44 @@
   <body>
 
     <header>
-        <h1 id="title">Outside</h1>
+        <h1 id="title" class="m">Outside</h1>
     </header>
 
     <section>
         <div>
-            <p>Temperature</p>
-            <h1 id="temperature"></h1>
-            <h1 id="webTemp"></h1>
+            <p class="s">Temperature</p>
+            <h1 id="temperature" class="l"></h1>
         </div>
         <div>
-            <p>Humidity</p>
-            <h1 id="humidity"></h1>
+            <p class="s">Humidity</p>
+            <h1 id="humidity" class="l"></h1>
         </div>
 
 
-    <script>document.write("JavaScript is enabled in your browser.")</script>
-    <noscript>It looks like JavaScript is disabled in your browser, or your browser doesn't support JavaScript.</noscript>
     </section>
 
     <script>
-        const header = document.querySelector('header');
-        const section = document.querySelector('section');
-        const requestURL = 'http://192.168.0.140:31000/getTemp';
-        var request = new XMLHttpRequest();
-        request.open('GET', requestURL);
-        request.responseType = 'text';
-        //request.send();
-        request.onload = function() {
-          console.log(request.responseText);
-          console.log(request.response);
-          const res = JSON.parse(request.response);
-          const webT = document.getElementById("temperature");
-          webT.innerHTML = res['temp_f'] + ' \xB0F';
+        getTemp();
 
-          const h2 = document.getElementById("humidity");
-          h2.innerHTML = res['humidity'] + ' %';
+        var i = setInterval(getTemp(), 60000);
+
+        function getTemp() {
+            const requestURL = 'http://192.168.0.140:31000/getTemp';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'text';
+            request.onload = function() {
+              console.log(request.responseText);
+              console.log(request.response);
+              const res = JSON.parse(request.response);
+              const webT = document.getElementById("temperature");
+              webT.innerHTML = res['temp_f'] + ' \xB0F';
+
+              const h2 = document.getElementById("humidity");
+              h2.innerHTML = res['humidity'] + ' %';
+            }
+            request.send(null);
         }
-        request.send(null);
-        var t = JSON.parse('{"temp" : "50", "humidity" : 48}');
-        //populateData(t);
-
-        function populateData(obj) {
-            const h1 = document.getElementById("temperature");
-            h1.innerHTML = obj.temp + ' \xB0F';
-
-            const h2 = document.getElementById("humidity");
-            h2.innerHTML = obj.humidity + ' %';
-        }
-        //var interval = setInterval('setTemp', 60000);
     </script>
   </body>
 </html>
