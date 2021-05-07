@@ -14,8 +14,18 @@ def home():
     return render_template("home.html")
 
 
+@app.route('/Moment.js')
+def moment_js():
+    return send_from_directory(os.path.join(app.root_path, 'templates'), 'Moment.js')
+
+
+@app.route('/date.js')
+def date_js():
+    return send_from_directory(os.path.join(app.root_path, 'templates'), 'date.js')
+
+
 @app.route('/style.css')
-def favicon():
+def style_css():
     return send_from_directory(os.path.join(app.root_path, 'templates'), 'style.css')
 
 
