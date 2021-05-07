@@ -30,7 +30,7 @@
     <script>
         getTemp();
 
-        var i = setInterval(getTemp(), 60000);
+        var i = setInterval(getTemp, 60000);
 
         function getTemp() {
             const requestURL = 'http://192.168.0.140:31000/getTemp';
