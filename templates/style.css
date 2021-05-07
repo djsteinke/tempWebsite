@@ -23,6 +23,10 @@ h1, h2 {
   margin-top: -20px;
 }
 
+span .l {
+  font-size: 3.5rem;
+}
+
 .m {
   font-size: 3rem;
   margin-top: 0px;
