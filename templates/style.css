@@ -37,6 +37,10 @@ span {
   margin-top: -15px;
 }
 
+.s2 {
+  font-size: 1.3rem;
+}
+
 h1 {
   font-size: 4rem;
   text-align: center;
@@ -50,6 +54,16 @@ header p {
 }
 
 /* section styles */
+
+header div.a {
+  width: 50%;
+  float: left;
+}
+
+header div.b {
+  width: 25%;
+  float: left;
+}
 
 section div {
   width: 50%;

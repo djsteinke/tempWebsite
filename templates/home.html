@@ -11,7 +11,15 @@
   <body>
 
     <header>
-        <h1 id="title" class="m">Outside</h1>
+        <div class="b">
+            <h1 id="date" class="s2"></h1>
+        </div>
+        <div class="a">
+            <h1 class="m">Outside</h1>
+        </div>
+        <div class="b">
+            <h1 id="time" class="s2"></h1>
+        </div>
     </header>
 
     <section>
@@ -29,8 +37,23 @@
 
     <script>
         getTemp();
+        setTime();
 
         var i = setInterval(getTemp, 60000);
+
+        function setTime() {
+            let d = new Date();
+            var mo = Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+            var day = Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
+            var hr = Intl.DateTimeFormat('en', { hour: 'numeric', hour12: 'true'}).format(d);
+            var am = hr.split(/(?=A|P)/g);
+            var min = Intl.DateTimeFormat('en', { minute: '2-digit'}).format(d);
+            if (min.length < 2) {
+                min = "0" + min;
+            }
+            document.getElementById("date").innerHTML = mo + ' ' + day;
+            document.getElementById("time").innerHTML = am[0] + ':' + min + ' ' + am[1];
+        }
 
         function getTemp() {
             const requestURL = 'http://192.168.0.140:31000/getTemp';
