@@ -27,7 +27,7 @@ def get_image():
 
     font_family = 'Ubuntu-R.ttf'
     #font_family = '/static/Roboto-Regular.ttf'
-    w = 900
+    w = 860
     h = 350
     img = Image.new('RGB', (w, h), color="#FFFFFF")
     canvas = ImageDraw.Draw(img)
