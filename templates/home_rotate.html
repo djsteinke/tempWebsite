@@ -53,7 +53,7 @@
 
     <script type="text/javascript">
         console.log("javascript executed");
-        getTemp();
+        // getTemp();
         getImg();
 
         var i = setInterval(getImg, 60000);
@@ -78,11 +78,6 @@
         }
 
         function getImg() {
-            const requestURL = '/img';
-            var request = new XMLHttpRequest();
-            request.open('GET', requestURL);
-            request.send(null);
-
             var timestamp = new Date().getTime();
             var el = document.getElementById('image');
             var queryString = "?t=" + timestamp;

@@ -2,6 +2,7 @@ import os
 import re
 import socket
 import requests
+import threading
 from flask_cors import CORS
 from PIL import Image, ImageDraw, ImageFont
 
@@ -9,6 +10,8 @@ from flask import Flask, render_template, send_from_directory, url_for
 
 app = Flask(__name__)
 CORS(app)
+
+timer = None
 
 
 @app.route('/img')
@@ -60,9 +63,8 @@ def get_image():
     img = img.rotate(90, expand=True)
 
     img.save('static/image.jpg')
-    v = '<img src=' + url_for('static', filename='image.jpg') + '>'
-    print(v)
-    return 'value'
+
+    threading.Timer(60, get_image).start()
 
 
 @app.route('/')
@@ -82,6 +84,7 @@ def style_css():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    get_image()
     host_name = socket.gethostbyname(socket.gethostname())
     try:
         stream = os.popen('hostname -I')
