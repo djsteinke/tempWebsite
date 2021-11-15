@@ -8,6 +8,7 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <!--<link rel="stylesheet" href="style.css"> -->
     <style>
+        html { font-family: 'helvetica neue', helvetica, arial, sans-serif;}
         .r { transform: rotate(-90deg); }
         div.f { width: 50%;
                 text-align: center; }
@@ -20,11 +21,15 @@
              margin-top: -15px; }
         td { font-size: 5rem;
              margin-top: -20px; }
+        h1, th, td {
+  text-color: black;
+  font-family: 'Roboto', cursive;
+}
     </style>
 </head>
 <body>
     <section>
-        <div class="r">
+        <div class="">
             <div class="f">
                 <h1 class="">Outside</h1>
                 <table>
@@ -39,11 +44,15 @@
                 </table>
             </div>
         </div>
+        <div>
+            <img id="image" src="/static/image.jpg"/>
+        </div>
     </section>
 
     <script type="text/javascript">
         console.log("javascript executed");
         getTemp();
+        getImg();
 
         var i = setInterval(getTemp, 60000);
 
@@ -61,8 +70,21 @@
 
               const h2 = document.getElementById("humidity");
               h2.innerHTML = Math.round(res['humidity']) + '<span>%</span>';
+
             }
             request.send(null);
+        }
+
+        function getImg() {
+            const requestURL = '/img';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.send(null);
+
+            var timestamp = new Date().getTime();
+            var el = document.getElementById('image');
+            var queryString = "?t=" + timestamp;
+            el.src = 'static/image.jpg' + queryString;
         }
     </script>
 </body>

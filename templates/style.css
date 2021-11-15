@@ -67,17 +67,6 @@ header div.b {
   float: left;
 }
 
-.rotate {
-  transform: rotate(-90deg);
-}
-
-section div.p {
-  width: 50%;
-  float: left;
-  font-size: 1.3rem;
-  margin-top: -15px;
-}
-
 /*
 section p {
   margin: 5px 0;

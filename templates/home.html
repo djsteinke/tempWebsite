@@ -36,9 +36,7 @@
     </section>
 
     <script type="text/javascript">
-        //import * as moment from '/Moment.js';
         console.log("javascript executed");
-        //setTime();
         getTemp();
 
         var i = setInterval(getTemp, 60000);
@@ -60,19 +58,6 @@
             }
             request.send(null);
         }
-/*
-        function setTime() {
-            console.log('setTime()');
-            let now = new Date();
-            var dateString = moment(now).format('YYYY-MM-DD');
-            console.log(dateString); // Output: 2020-07-21
-            //let d = new Date();
-            //var tm = new Date().toString('MMMM dS');
-            //var b = d.toLocaleString('en-US', {hour: "numeric", minute: "numeric"});
-            //document.getElementById("date").innerHTML = mo + ' ' + day;
-            //document.getElementById("time").innerHTML = Date().toShortTimeString();
-        }
-        */
     </script>
   </body>
 </html>
