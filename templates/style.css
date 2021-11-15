@@ -28,6 +28,7 @@ span {
 }
 
 .m {
+  width: 100%;
   font-size: 3rem;
   margin-top: 0px;
 }
@@ -56,8 +57,9 @@ header p {
 /* section styles */
 
 header div.a {
-  width: 50%;
+  width: 100%;
   float: left;
+  text-align: center;
 }
 
 header div.b {
@@ -65,9 +67,15 @@ header div.b {
   float: left;
 }
 
-section div {
+.rotate {
+  transform: rotate(-90deg);
+}
+
+section div.p {
   width: 50%;
   float: left;
+  font-size: 1.3rem;
+  margin-top: -15px;
 }
 
 /*

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta charset="utf-8">
+      <title>Status</title>
+
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <!--<link rel="stylesheet" href="style.css"> -->
+    <style>
+        .r { transform: rotate(-90deg); }
+        div.f { width: 50%;
+                text-align: center; }
+        h1 { font-size: 3rem;
+             margin-top: 0px; }
+        table { text-align: center;
+                width: 100%; }
+        th { width: 50%;
+             font-size: 1.3rem;
+             margin-top: -15px; }
+        td { font-size: 5rem;
+             margin-top: -20px; }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="r">
+            <div class="f">
+                <h1 class="">Outside</h1>
+                <table>
+                      <tr>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                      </tr>
+                      <tr>
+                        <td id="temperature">T Val</td>
+                        <td id="humidity">H Val</td>
+                      </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        console.log("javascript executed");
+        getTemp();
+
+        var i = setInterval(getTemp, 60000);
+
+        function getTemp() {
+            const requestURL = 'http://192.168.0.140:31000/getTemp';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'text';
+            request.onload = function() {
+              console.log(request.responseText);
+              console.log(request.response);
+              const res = JSON.parse(request.response);
+              const webT = document.getElementById("temperature");
+              webT.innerHTML = Math.round(res['temp_f']) + '<span>\xB0F</span>';
+
+              const h2 = document.getElementById("humidity");
+              h2.innerHTML = Math.round(res['humidity']) + '<span>%</span>';
+            }
+            request.send(null);
+        }
+    </script>
+</body>
+</html>
