@@ -1,9 +1,9 @@
 import os
 import re
 import socket
+import requests
 from flask_cors import CORS
 from PIL import Image, ImageDraw, ImageFont
-from PIL.ImageFont import load_default
 
 from flask import Flask, render_template, send_from_directory, url_for
 
@@ -13,40 +13,51 @@ CORS(app)
 
 @app.route('/img')
 def get_image():
-    w = 758
-    h = 758
+    response = requests.get('http://192.168.0.140:31000/getTemp')
+    r_json = response.json()
+    t = r_json['temp_f']
+    h = r_json['humidity']
+    # t = 75
+    # h = 30
+    t_str = f'{t}\N{DEGREE SIGN}F'
+    h_str = f'{h}%'
+
+    font_family = 'Ubuntu-R.ttf'
+    #font_family = '/static/Roboto-Regular.ttf'
+    w = 940
+    h = 400
     img = Image.new('RGB', (w, h), color="#FFFFFF")
     canvas = ImageDraw.Draw(img)
 
-    font = ImageFont.truetype('/static/Roboto-Regular.ttf', 50)
+    font = ImageFont.truetype(font_family, 60)
     text_width, text_height = canvas.textsize('Outside', font=font)
     x_pos = int((w - text_width) / 2)
     y_pos = int(text_height/2)
     canvas.text((x_pos, y_pos), "Outside", font=font, fill='#000000')
 
-    font = ImageFont.truetype('/static/Roboto-Regular.ttf', 30)
+    font = ImageFont.truetype(font_family, 35)
     text_width, text_height = canvas.textsize('Temperature', font=font)
     x_pos = int(w/4 - text_width/2)
     y_pos = int(y_pos + 50 + (text_height*1.1))
     canvas.text((x_pos, y_pos), "Temperature", font=font, fill='#000000')
 
-    font = ImageFont.truetype('/static/Roboto-Regular.ttf', 30)
+    font = ImageFont.truetype(font_family, 35)
     text_width, text_height = canvas.textsize('Humidity', font=font)
     x_pos = int(3*w/4 - text_width/2)
     canvas.text((x_pos, y_pos), "Humidity", font=font, fill='#000000')
 
-    font = ImageFont.truetype('/static/Roboto-Regular.ttf', 100)
-    text_width, text_height = canvas.textsize('T Val', font=font)
+    font = ImageFont.truetype(font_family, 120)
+    text_width, text_height = canvas.textsize(t_str, font=font)
     x_pos = int(w/4 - text_width/2)
-    y_pos = int(y_pos + 50 )
-    canvas.text((x_pos, y_pos), "T Val", font=font, fill='#000000')
+    y_pos = int(y_pos + 50)
+    canvas.text((x_pos, y_pos), t_str, font=font, fill='#000000')
 
-    font = ImageFont.truetype('/static/Roboto-Regular.ttf', 100)
-    text_width, text_height = canvas.textsize('H Val', font=font)
+    font = ImageFont.truetype(font_family, 120)
+    text_width, text_height = canvas.textsize(h_str, font=font)
     x_pos = int(3*w/4 - text_width/2)
-    canvas.text((x_pos, y_pos), "H Val", font=font, fill='#000000')
+    canvas.text((x_pos, y_pos), h_str, font=font, fill='#000000')
 
-    img.rotate(90).show()
+    img = img.rotate(90, expand=True)
 
     img.save('static/image.jpg')
     v = '<img src=' + url_for('static', filename='image.jpg') + '>'
