@@ -15,8 +15,8 @@ CORS(app)
 def get_image():
     response = requests.get('http://192.168.0.140:31000/getTemp')
     r_json = response.json()
-    t = r_json['temp_f']
-    h = r_json['humidity']
+    t = round(r_json['temp_f'], 0)
+    h = round(r_json['humidity'], 0)
     # t = 75
     # h = 30
     t_str = f'{t}\N{DEGREE SIGN}F'
