@@ -37,24 +37,24 @@ def get_image():
 
     font = ImageFont.truetype(font_family, 35)
     text_width, text_height = canvas.textsize('Temperature', font=font)
-    x_pos = int(w/3 - text_width/2)
+    x_pos = int(w/3.5 - text_width/2)
     y_pos = int(y_pos + 50 + (text_height*1.1))
     canvas.text((x_pos, y_pos), "Temperature", font=font, fill='#000000')
 
     font = ImageFont.truetype(font_family, 35)
     text_width, text_height = canvas.textsize('Humidity', font=font)
-    x_pos = int(2*w/3 - text_width/2)
+    x_pos = int(2.5*w/3.5 - text_width/2)
     canvas.text((x_pos, y_pos), "Humidity", font=font, fill='#000000')
 
     font = ImageFont.truetype(font_family, 120)
     text_width, text_height = canvas.textsize(t_str, font=font)
-    x_pos = int(w/3 - text_width/2)
+    x_pos = int(w/3.5 - text_width/2)
     y_pos = int(y_pos + 50)
     canvas.text((x_pos, y_pos), t_str, font=font, fill='#000000')
 
     font = ImageFont.truetype(font_family, 120)
     text_width, text_height = canvas.textsize(h_str, font=font)
-    x_pos = int(2*w/3 - text_width/2)
+    x_pos = int(2.5*w/3.5 - text_width/2)
     canvas.text((x_pos, y_pos), h_str, font=font, fill='#000000')
 
     img = img.rotate(90, expand=True)
